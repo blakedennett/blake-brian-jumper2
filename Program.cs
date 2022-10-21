@@ -9,9 +9,8 @@ void Main () {
         Console.Write("\n\n");
         word.DisplayBadLetters();
         word.DisplayGuess();
-        word.DisplaySolution(); 
         parachute.DisplayParachute();
-        if (!word.Contains(GetUserInput())) {
+        if (!word.Contains(GetUserInput(word))) {
             parachute.WrongGuessPunishment();
             Console.Write("\nAwww, that letter is not in the word.");
         } else {
@@ -21,14 +20,14 @@ void Main () {
     
 }
 
-char GetUserInput () {
+char GetUserInput (Word word) {
     char[] input;
     Console.Write("\nType a letter to guess: ");
     while (true) {
         input = Console.ReadLine().ToCharArray();
         if (input.Length == 1) {
             if ((input[0] >= 'a' && input[0] <= 'z') || (input[0] >= 'A' && input[0] <= 'Z')) {
-                if (!Word.IsAlreadyGuessed(input[0])) {
+                if (!word.IsAlreadyGuessed(input[0])) {
                     break;
             }
             }
