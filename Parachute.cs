@@ -4,6 +4,7 @@ class Parachute {
 
     public Parachute() {
 
+        parachuteParts.Add("\n");
         parachuteParts.Add("  --");
         parachuteParts.Add(" /  \\");
         parachuteParts.Add(" ----");
@@ -24,7 +25,7 @@ class Parachute {
 
     public void WrongGuessPunishment() {
 
-        parachuteParts.RemoveAt(0);
+        parachuteParts.RemoveAt(1);
 
     }
 
@@ -33,10 +34,11 @@ class Parachute {
 
         int length = parachuteParts.Count;
 
-        if (length <= 3) {
+        if (length <= 4) {
 
-            parachuteParts.RemoveAt(0);
-            parachuteParts.Insert(0, "  x");
+            parachuteParts.RemoveAt(1);
+            parachuteParts.Insert(1, "  x");
+            Console.WriteLine($"\nBetter luck next time!");
 
             return false;
         }

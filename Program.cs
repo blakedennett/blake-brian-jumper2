@@ -3,12 +3,13 @@
 void Main () {
     Word word = new Word();
     Parachute parachute = new Parachute();
+    word.GetNew();
 
     do {
-        word.GetNew();
         Console.Write("\n\n");
         word.DisplayBadLetters();
         word.DisplayGuess();
+        word.DisplaySolution(); 
         parachute.DisplayParachute();
         if (!word.Contains(GetUserInput())) {
             parachute.WrongGuessPunishment();
@@ -16,7 +17,7 @@ void Main () {
         } else {
             Console.Write("\nHooray! That letter is in the word!");
         }
-    } while (!word.HasWon() || parachute.IsManAlive());
+    } while (!word.HasWon() && parachute.IsManAlive());
     
 }
 
@@ -26,8 +27,10 @@ char GetUserInput () {
     while (true) {
         input = Console.ReadLine().ToCharArray();
         if (input.Length == 1) {
-            if ((input[0] > 'a' && input[0] < 'z') || (input[0] > 'A' && input[0] < 'Z')) {
-                break;
+            if ((input[0] >= 'a' && input[0] <= 'z') || (input[0] >= 'A' && input[0] <= 'Z')) {
+                if (!Word.IsAlreadyGuessed(input[0])) {
+                    break;
+            }
             }
         }
         Console.WriteLine("Invalid input. Try again.");

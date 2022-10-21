@@ -22,23 +22,33 @@ class Word {
         if (guess.Contains('_')) {
             return false;
         }
+        Console.WriteLine($"\nGreat Job!");
         return true;
     }
     public void DisplayGuess () {
+        Console.WriteLine();
         for (int i = 0; i < length; i++) {
-            Console.Write($"guess: {guess[i]}");
+            Console.Write(guess[i]);
         }
     }
     public void DisplaySolution () {
+        Console.WriteLine();
         for (int i = 0; i < length; i++) {
             Console.Write(solution[i]);
         }
     }
     public void DisplayBadLetters () {
         Console.Write("You have used these letters: ");
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < badLetters.Count; i++) {
             Console.Write(badLetters[i] + " ");
         }
+    }
+
+    public bool IsAlreadyGuessed(char letter) {
+        if (badLetters.Contains(letter)) {
+            return true;
+        }
+        return false;
     }
     public void GetNew () { // gets a new word and stores it into the solution
         List<string> wordList = new List<string> {
@@ -896,6 +906,7 @@ class Word {
         };
         // randomly assigns one of the above words to solution
         Random randNum = new Random();
+        solution.Clear();
         solution.AddRange(wordList[randNum.Next(0, 800)].ToCharArray());
         length = solution.Count();
         // blanks the guess and gives it a length that is the same as the solution
