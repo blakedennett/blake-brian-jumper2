@@ -22,7 +22,6 @@ class Word {
         if (guess.Contains('_')) {
             return false;
         }
-        Console.WriteLine($"\nGreat Job!");
         return true;
     }
     public void DisplayGuess () {
@@ -32,7 +31,7 @@ class Word {
         }
     }
     public void DisplaySolution () {
-        Console.WriteLine();
+        // Console.WriteLine();
         for (int i = 0; i < length; i++) {
             Console.Write(solution[i]);
         }

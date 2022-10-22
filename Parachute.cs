@@ -38,7 +38,6 @@ class Parachute {
 
             parachuteParts.RemoveAt(1);
             parachuteParts.Insert(1, "  x");
-            Console.WriteLine($"\nBetter luck next time!");
 
             return false;
         }

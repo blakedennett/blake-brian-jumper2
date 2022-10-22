@@ -17,6 +17,18 @@ void Main () {
             Console.Write("\nHooray! That letter is in the word!");
         }
     } while (!word.HasWon() && parachute.IsManAlive());
+
+    if (!parachute.IsManAlive()) {
+        parachute.DisplayParachute();
+        Console.WriteLine($"\nBetter luck next time!");
+        Console.Write($"The word was ");
+        word.DisplaySolution();
+    }
+    else if (word.HasWon()) {
+        Console.WriteLine($"\nGreat Job!");
+        Console.Write($"The word was ");
+        word.DisplaySolution();
+    }
     
 }
 
